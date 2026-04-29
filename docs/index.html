@@ -263,6 +263,94 @@ section.day .day-subtitle {
 .decision .opt { margin: 8px 0; padding-left: 14px; border-left: 2px solid var(--rule); }
 .decision .opt strong { font-weight: 600; }
 
+/* Numbered steps (airport arrival) --------------------------------------- */
+.airport-intro {
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 6px 0 14px;
+}
+.airport-intro a.map { color: var(--ink); }
+ol.airport-steps {
+  counter-reset: stepc;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+ol.airport-steps > li.step {
+  counter-increment: stepc;
+  position: relative;
+  padding: 16px 0 16px 44px;
+  border-top: 1px solid var(--rule);
+}
+ol.airport-steps > li.step:first-child {
+  border-top: 0;
+  padding-top: 6px;
+}
+ol.airport-steps > li.step::before {
+  content: counter(stepc);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+ol.airport-steps > li.step:first-child::before { top: 4px; }
+ol.airport-steps > li.step h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+ol.airport-steps > li.step p { margin: 6px 0; line-height: 1.55; }
+ol.airport-steps > li.step ul { margin: 6px 0 6px 20px; }
+ol.airport-steps > li.step li { margin: 4px 0; line-height: 1.5; }
+ol.airport-steps > li.step .save {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--yellow-tint);
+  border-left: 3px solid var(--yellow);
+  border-radius: 0 3px 3px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.airport-notes {
+  margin-top: 22px;
+  padding: 14px 16px;
+  background: var(--card);
+  border-left: 3px solid var(--ink-soft);
+  border-radius: 0 3px 3px 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.airport-notes h4 {
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.airport-notes ul { margin: 0 0 0 20px; }
+.airport-notes li { margin: 6px 0; }
+.airport-notes p { margin: 6px 0; }
+@media (min-width: 720px) {
+  ol.airport-steps > li.step { padding-left: 50px; }
+  ol.airport-steps > li.step::before { width: 34px; height: 34px; font-size: 1rem; }
+  ol.airport-steps > li.step h4 { font-size: 1.1rem; }
+}
+
 /* TBD style -------------------------------------------------------------- */
 .tbd {
   background: var(--card);
@@ -434,10 +522,96 @@ footer.site-footer .updated { margin-bottom: 4px; }
           <li>16 minutes nonstop from VIE to Wien Mitte</li>
           <li>Runs every 30 minutes</li>
           <li>Wide aisles, dedicated luggage racks at the end of each car, level boarding</li>
-          <li>~€12 per person at the machine (cheaper online in advance)</li>
+          <li>~€14 per person at the machine (cheaper online in advance)</li>
         </ul>
         <p>The S7 is half the price but slower (25–35 min), more crowded, designed for commuters not travellers with suitcases. Skip it.</p>
         <p><em class="note">Buy a 24-hour Vienna transit ticket (€8) at any vending machine when you first arrive at Wien Mitte. Covers all U-Bahn, trams, buses for 24 h from validation.</em></p>
+      </div>
+    </details>
+    <details>
+      <summary>Step-by-step: how to get on the CAT and pay for 3 tickets</summary>
+      <div class="body">
+        <p class="airport-intro">
+          Vienna International Airport (<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Vienna+International+Airport+VIE+Schwechat" target="_blank" rel="noopener">VIE / Schwechat</a>) → Apartment (<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Bl%C3%BCtengasse+14-16+1030+Wien" target="_blank" rel="noopener">Blütengasse 14–16, 1030 Wien</a>) via the City Airport Train. For 3 people (Ivan + two parents), Ivan paying.
+        </p>
+        <ol class="airport-steps">
+          <li class="step">
+            <h4>Plane lands at VIE</h4>
+            <p>Bulgaria has been in Schengen since 2025, so <strong>no passport control</strong> on arrival from a Schengen flight — walk straight off the plane and through.</p>
+          </li>
+          <li class="step">
+            <h4>Baggage claim</h4>
+            <p>Head down to baggage claim, find your suitcases. Allow 15–20 minutes for bags, especially if multiple flights land at once.</p>
+          </li>
+          <li class="step">
+            <h4>Walk through customs</h4>
+            <p>Take the green "Nothing to Declare" lane — just keep walking, no stop — into the arrivals hall (<em>Ankunftshalle</em>).</p>
+          </li>
+          <li class="step">
+            <h4>Find the green CAT signs</h4>
+            <p>Bright green <strong>"CAT"</strong> or <strong>"City Airport Train"</strong> signs are visible from the arrivals hall. They point to escalators and elevators going <em>down</em> to the train platforms. The CAT has its own dedicated platform; the branding is unmistakable.</p>
+          </li>
+          <li class="step">
+            <h4>Buy three tickets at a CAT vending machine</h4>
+            <p>There are CAT-branded machines (green and black) in the arrivals hall as well as down at the platform. Use the one in the arrivals hall before heading down.</p>
+            <ul>
+              <li>Touch the screen to wake it up</li>
+              <li>Tap the <strong>UK/US flag</strong> for English</li>
+              <li>Choose <strong>"Single ticket"</strong> (one-way)</li>
+              <li>Choose route: <strong>Vienna Airport → Wien Mitte</strong></li>
+              <li>Set quantity to <strong>3</strong> using the +/– buttons or quantity field</li>
+              <li>Total: <strong>~€42</strong> (€14 × 3 at the machine)</li>
+              <li><strong>Pay with a credit card</strong> — easier than fumbling cash with three tickets to buy. Tap-to-pay or chip-and-PIN both work; Visa/Mastercard/Amex all accepted.</li>
+              <li>Three paper tickets print out. Keep all three together in one pocket.</li>
+            </ul>
+            <div class="save">
+              <strong>Save ~€6 total:</strong> buy online at <a class="map" href="https://www.cityairporttrain.com/" target="_blank" rel="noopener">cityairporttrain.com</a> before travelling — 3 tickets cost about €36, and you'll get QR codes on your phone instead of paper. Either works equally well.
+            </div>
+          </li>
+          <li class="step">
+            <h4>Down to the platform</h4>
+            <p>Escalator or elevator. <strong>Use the elevator</strong> with luggage and parents.</p>
+          </li>
+          <li class="step">
+            <h4>Identify the right train</h4>
+            <p>CAT trains are unmistakable — <strong>bright green and white</strong>, with "City Airport Train" written along the side. They look obviously different from the regular ÖBB and S-Bahn trains on adjacent tracks.</p>
+            <ul>
+              <li>If you see a train that's <strong>red-and-white</strong> (ÖBB Railjet) or <strong>red-and-grey</strong> (S-Bahn), that's NOT your train — wait for the green one.</li>
+              <li>The platform display shows the next CAT departure time.</li>
+            </ul>
+          </li>
+          <li class="step">
+            <h4>CAT departures every 30 minutes</h4>
+            <p>If you just missed one, the wait isn't long. Your ticket is valid for 4 hours from purchase, so missing one is not a problem.</p>
+          </li>
+          <li class="step">
+            <h4>Board</h4>
+            <p><strong>Level boarding</strong> (no step up from the platform — wheel your suitcase straight on). Wide aisles, generous seats, dedicated luggage racks at the ends of each car. Settle into any unreserved seat.</p>
+          </li>
+          <li class="step">
+            <h4>Ride — 16 minutes nonstop</h4>
+            <p>Announcements in German and English: <em>"Nächster Halt: Wien Mitte. Next stop: Wien Mitte."</em></p>
+            <p>A conductor may walk through to check tickets mid-trip — just show your three paper tickets (or QR codes). They don't need to be validated/stamped separately; the date is already printed on them.</p>
+          </li>
+          <li class="step">
+            <h4>Arrive at Wien Mitte (final stop)</h4>
+            <p>Everyone gets off. Wien Mitte is a busy multi-level station with shops and several transit lines.</p>
+            <p>Follow exit signs marked <strong>"Ausgang Landstraßer Hauptstraße"</strong> — that's the direction toward the apartment. Take the elevator or escalator up to the surface.</p>
+          </li>
+          <li class="step">
+            <h4>Wien Mitte → Apartment</h4>
+            <p><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Bl%C3%BCtengasse+14-16+1030+Wien" target="_blank" rel="noopener">Blütengasse 14–16</a> is <strong>about 5–7 minutes' walk</strong>. Up Landstraßer Hauptstraße or its parallel side streets. Wheeled-luggage-friendly the whole way.</p>
+          </li>
+        </ol>
+        <div class="airport-notes">
+          <h4>Practical notes</h4>
+          <ul>
+            <li><strong>The ticket itself:</strong> a paper card about credit-card sized, with the date and route printed on it. No special validation needed.</li>
+            <li><strong>If you accidentally get on the wrong train:</strong> the ÖBB Railjet also goes from VIE to Wien Mitte in 16 min, but your CAT ticket is not valid on it. If a conductor catches you on the wrong train, explain politely and you'll likely just need to buy an ÖBB ticket on board (~€5 extra per person). Easy mistake to avoid: trust the green-and-white branding.</li>
+            <li><strong>The platform might be slightly cold</strong> (it's below ground level). Have your jackets handy.</li>
+            <li><strong>Children under 14</strong> ride free with a paying adult — not relevant for this trip but useful for future reference.</li>
+          </ul>
+        </div>
       </div>
     </details>
   </div>
