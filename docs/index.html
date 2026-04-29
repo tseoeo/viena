@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4c430">
+<title>Vienna · 30 April – 3 May 2026</title>
+<style>
+:root {
+  --yellow: #f4c430;
+  --yellow-soft: #fdf3c8;
+  --yellow-tint: #fefaeb;
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --ink-fade: #777;
+  --rule: #e6e6e6;
+  --bg: #ffffff;
+  --card: #fafaf7;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 600px) {
+  body { font-size: 18px; line-height: 1.55; }
+}
+
+a { color: var(--ink); }
+a.map {
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a.tel { text-decoration: underline; text-decoration-thickness: 2px; }
+
+/* Header ----------------------------------------------------------------- */
+header.site-header {
+  padding: 28px 20px 18px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+header.site-header .eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+header.site-header h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+header.site-header .apt {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+header.site-header .apt strong { color: var(--ink); font-weight: 600; }
+
+/* Quick reference strip -------------------------------------------------- */
+.quickref {
+  background: var(--yellow-tint);
+  border-bottom: 1px solid var(--yellow);
+  padding: 16px 20px;
+}
+.quickref ul { list-style: none; }
+.quickref li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.quickref li .label {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  align-self: start;
+  padding-top: 2px;
+}
+
+/* Sticky day tabs -------------------------------------------------------- */
+nav.daytabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+nav.daytabs::-webkit-scrollbar { display: none; }
+nav.daytabs a {
+  flex: 1 1 0;
+  min-width: 80px;
+  text-align: center;
+  padding: 14px 8px 11px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+nav.daytabs a small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-fade);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+nav.daytabs a:hover, nav.daytabs a:focus {
+  background: var(--yellow-tint);
+  border-bottom-color: var(--yellow);
+}
+nav.daytabs a:active { background: var(--yellow-soft); }
+
+/* Day section ------------------------------------------------------------ */
+section.day {
+  padding: 32px 20px 36px;
+  border-bottom: 8px solid var(--yellow-tint);
+  scroll-margin-top: 56px;
+}
+section.day .day-header {
+  margin-bottom: 22px;
+}
+section.day h2 {
+  font-size: 1.35rem;
+  background: var(--yellow);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+section.day .day-subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Timeline blocks -------------------------------------------------------- */
+.block {
+  border-left: 3px solid var(--yellow);
+  padding: 10px 0 10px 16px;
+  margin-bottom: 8px;
+}
+.block .time {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.block .activity {
+  font-size: 1.02rem;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.block details {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+.block details summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  padding: 6px 0;
+  list-style: none;
+  font-weight: 500;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.88rem;
+}
+.block details summary::-webkit-details-marker { display: none; }
+.block details summary::before {
+  content: "+";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+}
+.block details[open] summary::before {
+  content: "−";
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.block details > .body {
+  padding: 8px 0 4px 26px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.block details > .body p { margin: 6px 0; }
+.block details > .body p + p { margin-top: 10px; }
+.block details > .body strong { font-weight: 600; }
+.block details > .body ul { margin: 6px 0 6px 20px; }
+.block details > .body li { margin: 4px 0; }
+.block details > .body em.note { color: var(--ink-soft); font-style: normal; font-size: 0.9rem; }
+
+/* Callouts --------------------------------------------------------------- */
+.callout {
+  background: var(--yellow-tint);
+  border-left: 4px solid var(--yellow);
+  padding: 12px 14px;
+  margin: 14px 0 10px;
+  border-radius: 0 3px 3px 0;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+.callout strong { font-weight: 700; }
+
+/* Decision card (Saturday afternoon, Friday afternoon options) ----------- */
+.decision {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 0.93rem;
+}
+.decision h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.decision .opt { margin: 8px 0; padding-left: 14px; border-left: 2px solid var(--rule); }
+.decision .opt strong { font-weight: 600; }
+
+/* TBD style -------------------------------------------------------------- */
+.tbd {
+  background: var(--card);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Restaurants card ------------------------------------------------------- */
+section.restaurants {
+  padding: 32px 20px 24px;
+  background: var(--card);
+  border-top: 1px solid var(--rule);
+}
+section.restaurants h2 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+section.restaurants .sub {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.restaurant {
+  border-top: 1px solid var(--rule);
+  padding: 14px 0;
+}
+.restaurant:first-of-type { border-top: 0; padding-top: 4px; }
+.restaurant .name {
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+.restaurant .name .role {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  font-weight: 600;
+  background: var(--yellow-tint);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.restaurant .desc {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.restaurant .meta {
+  font-size: 0.9rem;
+}
+
+/* Footer ----------------------------------------------------------------- */
+footer.site-footer {
+  padding: 24px 20px 32px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-fade);
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+footer.site-footer .updated { margin-bottom: 4px; }
+
+/* Tablet+ ---------------------------------------------------------------- */
+@media (min-width: 720px) {
+  body { max-width: 760px; margin: 0 auto; box-shadow: 0 0 0 1px var(--rule); }
+  header.site-header { padding: 36px 32px 22px; }
+  header.site-header h1 { font-size: 1.9rem; }
+  .quickref { padding: 18px 32px; }
+  .quickref li { grid-template-columns: 130px 1fr; }
+  nav.daytabs a { padding: 16px 12px 13px; font-size: 1rem; }
+  section.day { padding: 40px 32px 44px; }
+  section.day h2 { font-size: 1.6rem; }
+  section.restaurants { padding: 36px 32px 28px; }
+  .block { padding-left: 18px; }
+}
+
+/* Print ------------------------------------------------------------------ */
+@media print {
+  body { font-size: 11pt; line-height: 1.4; max-width: none; box-shadow: none; }
+  nav.daytabs { display: none; }
+  header.site-header { border-bottom: 2px solid #000; }
+  .quickref { background: #f5f5f5; border-bottom: 1px solid #999; }
+  section.day { page-break-inside: avoid; padding: 18pt 0; border-bottom: 1px solid #999; }
+  section.day h2 { background: transparent; border-bottom: 2px solid #000; padding-left: 0; }
+  details { display: block; }
+  details > summary { display: none; }
+  details > .body { display: block !important; padding-left: 0; }
+  .block { border-left: 2px solid #888; }
+  footer.site-footer { display: none; }
+  a { color: #000; text-decoration: underline; }
+}
+
+/* Reduced motion --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="eyebrow">Trip itinerary</div>
+  <h1>Vienna · 30 April – 3 May 2026</h1>
+  <div class="apt">
+    Apartment: <strong>Blütengasse 14–16, 1030 Wien</strong>
+    · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Bl%C3%BCtengasse+14-16+1030+Wien" target="_blank" rel="noopener">map</a>
+  </div>
+</header>
+
+<section class="quickref" aria-label="Quick reference">
+  <ul>
+    <li>
+      <span class="label">Concert</span>
+      <span><strong>Thu 30 Apr · 19:30</strong><br>
+        Wiener Symphoniker / Santtu-Matias Rouvali · Großer Saal, Musikverein
+        · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Musikverein+Bösendorferstraße+12+1010+Wien" target="_blank" rel="noopener">map</a></span>
+    </li>
+    <li>
+      <span class="label">Belvedere</span>
+      <span><strong>Fri 1 May · 9:15 timed entry</strong><br>
+        Upper Belvedere south entrance, Prinz-Eugen-Straße 27
+        · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Upper+Belvedere+Prinz-Eugen-Straße+27+1030+Wien" target="_blank" rel="noopener">map</a></span>
+    </li>
+    <li>
+      <span class="label">Emergencies</span>
+      <span><a class="tel" href="tel:112">112</a> EU emergency · <a class="tel" href="tel:144">144</a> ambulance · <a class="tel" href="tel:133">133</a> police</span>
+    </li>
+  </ul>
+</section>
+
+<nav class="daytabs" aria-label="Day navigation">
+  <a href="#thursday">Thu<small>30 Apr</small></a>
+  <a href="#friday">Fri<small>1 May</small></a>
+  <a href="#saturday">Sat<small>2 May</small></a>
+  <a href="#sunday">Sun<small>3 May</small></a>
+</nav>
+
+<!-- THURSDAY ============================================================= -->
+<section class="day" id="thursday">
+  <div class="day-header">
+    <h2>Thursday · 30 April</h2>
+    <p class="day-subtitle">Arrival, settle in, slow Innere Stadt loop, evening concert at the Musikverein.</p>
+  </div>
+
+  <div class="block">
+    <div class="time">08:35</div>
+    <div class="activity">Land at Vienna airport (VIE)</div>
+  </div>
+
+  <div class="block">
+    <div class="time">09:30 – 10:00</div>
+    <div class="activity">CAT (City Airport Train) → Wien Mitte</div>
+    <details>
+      <summary>Why CAT, not S7</summary>
+      <div class="body">
+        <p>Take the <strong>CAT</strong>, not the S7. CAT is the roomier, traveller-oriented option:</p>
+        <ul>
+          <li>16 minutes nonstop from VIE to Wien Mitte</li>
+          <li>Runs every 30 minutes</li>
+          <li>Wide aisles, dedicated luggage racks at the end of each car, level boarding</li>
+          <li>~€12 per person at the machine (cheaper online in advance)</li>
+        </ul>
+        <p>The S7 is half the price but slower (25–35 min), more crowded, designed for commuters not travellers with suitcases. Skip it.</p>
+        <p><em class="note">Buy a 24-hour Vienna transit ticket (€8) at any vending machine when you first arrive at Wien Mitte. Covers all U-Bahn, trams, buses for 24 h from validation.</em></p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">10:00 – 10:15</div>
+    <div class="activity">Walk to Café Schwarzenberg with luggage</div>
+    <details>
+      <summary>Route from Wien Mitte</summary>
+      <div class="body">
+        <p>~12–15 min slowly down Landstraßer Hauptstraße and across Schwarzenbergplatz. Flat, paved, fine for wheeled luggage.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">10:15 – 12:00</div>
+    <div class="activity">Long Viennese breakfast at Café Schwarzenberg</div>
+    <details>
+      <summary>Café Schwarzenberg — what to order, why here</summary>
+      <div class="body">
+        <p><strong>Address:</strong> Kärntner Ring 17, on Schwarzenbergplatz, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Schwarzenberg+Kärntner+Ring+17+1010+Wien" target="_blank" rel="noopener">map</a></p>
+        <p><strong>Why here:</strong> classic Viennese coffeehouse (founded 1861) — marble tables, Thonet chairs, wood newspaper rack, opens early. Spacious enough that two suitcases tuck under the table without drama. Barrier-free, predictable seating.</p>
+        <p><strong>Order:</strong> <em>Wiener Frühstück</em> — a kaisersemmel roll, butter, ham, jam, soft-boiled egg in a cup, plus a <em>Melange</em> (Vienna's milky coffee, similar to a flat white). Linger over a second Melange. Sitting for an hour or two over one breakfast is the actual point.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">12:00 – 12:30</div>
+    <div class="activity">Slow walk to apartment via Rennweg → early check-in</div>
+    <details>
+      <summary>Walking route</summary>
+      <div class="body">
+        <p>~8–10 min from Café Schwarzenberg, flat. Aim for check-in around 12:00–12:30; bags stay with us until then.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">12:30 – 14:30</div>
+    <div class="activity">Settle in, nap</div>
+  </div>
+
+  <div class="block">
+    <div class="time">14:45 – 17:00</div>
+    <div class="activity">Innere Stadt slow loop: Stephansdom → Graben → Kohlmarkt → café pause</div>
+    <details>
+      <summary>The loop, step by step</summary>
+      <div class="body">
+        <p>U3 from Wien Mitte to Stephansplatz — 3 min ride, both stations have elevators.</p>
+        <ul>
+          <li><strong>Stephansdom</strong> — free entry. Sit on a pew for 10 minutes. Look up at the Gothic vault and the multicoloured tile roof from outside.</li>
+          <li><strong>Graben</strong> — wide pedestrian boulevard, baroque Pestsäule (Plague Column) in the middle.</li>
+          <li><strong>Kohlmarkt</strong> — Vienna's elegant shopping street, Habsburg-era storefronts. Not for shopping, for the façades.</li>
+          <li><strong>Café pause</strong> — pick one:
+            <ul>
+              <li>Café Diglas (Wollzeile 10), 3 min from cathedral. Classic, large, marble tables, excellent Apfelstrudel. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Diglas+Wollzeile+10+1010+Wien" target="_blank" rel="noopener">map</a></li>
+              <li>Café Frauenhuber (Himmelpfortgasse 6), 5 min from Stephansplatz. Vienna's oldest café (1824); Mozart and Beethoven both performed in this building. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Frauenhuber+Himmelpfortgasse+6+1010+Wien" target="_blank" rel="noopener">map</a></li>
+            </ul>
+          </li>
+          <li>U3 back to Wien Mitte (~3 min).</li>
+        </ul>
+        <div class="callout"><strong>Bad-weather backup:</strong> skip the Innere Stadt walk; spend the afternoon at Café Schwarzenberg again, or at Café Prückel opposite Stadtpark (5 min from the apartment). Same calm shape, fully indoors.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">~17:00</div>
+    <div class="activity">Billa Plus stop for light dinner shopping</div>
+    <details>
+      <summary>What to pick up</summary>
+      <div class="body">
+        <p>Cold cuts, cheese, bread, salad, soup, fruit, water. Nothing heavy — the concert is at 19:30.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">17:15 – 18:30</div>
+    <div class="activity">Light dinner at apartment, change for concert</div>
+    <details>
+      <summary>What father needs sorted</summary>
+      <div class="body">
+        <p>Make sure he has dinner sorted from the Billa stop, water, wifi password if needed, before you leave for the concert.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">18:30</div>
+    <div class="activity">Leave for Musikverein</div>
+    <details>
+      <summary>Walk or taxi · dress code</summary>
+      <div class="body">
+        <p><strong>Walk</strong> if mom has the energy (~18–20 min, flat, through Schwarzenbergplatz at dusk — pretty). <strong>Taxi</strong> if she's tired (~€10, ~5 min).</p>
+        <p><strong>Dress:</strong> smart casual. Jacket and collared shirt for Ivan, dress or skirt-and-blouse for mom. Full evening dress is rare except at premieres; this is a regular subscription concert.</p>
+        <p><strong>Cloakroom is mandatory</strong> — coats and bags get checked. Don't bring them to your seat.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">19:30 – ~21:30</div>
+    <div class="activity">Wiener Symphoniker / Rouvali · Großer Saal, Musikverein</div>
+    <details>
+      <summary>Address &amp; getting back</summary>
+      <div class="body">
+        <p><strong>Musikverein, Großer Saal</strong> — Bösendorferstraße / Musikvereinsplatz, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Musikverein+Bösendorferstraße+12+1010+Wien" target="_blank" rel="noopener">map</a></p>
+        <p>Doors generally open 30 min before concert time. Concert ends ~21:30. Taxi stand outside the Musikverein. <strong>Take a taxi back</strong> — don't make her walk at that hour.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- FRIDAY =============================================================== -->
+<section class="day" id="friday">
+  <div class="day-header">
+    <h2>Friday · 1 May</h2>
+    <p class="day-subtitle">Belvedere (timed entry) → Botanical Garden → Schnitzel lunch → afternoon decision.</p>
+  </div>
+
+  <div class="callout">
+    <strong>May 1 caveat:</strong> Tag der Arbeit / public holiday. May Day demonstrations concentrate around the Ring/Rathaus zone. Today's geography keeps us out of it — Belvedere and Botanical Garden are in the 3rd district, and lunch is on the eastern Ring (Schubertring/Karlsplatz), well east of the Rathaus end. By midday the marches will have cleared.
+  </div>
+
+  <div class="block">
+    <div class="time">08:30</div>
+    <div class="activity">Wake, slow breakfast at apartment</div>
+  </div>
+
+  <div class="block">
+    <div class="time">09:00</div>
+    <div class="activity">Walk to Upper Belvedere (~10–12 min)</div>
+    <details>
+      <summary>Route — and which entrance</summary>
+      <div class="body">
+        <p>From Blütengasse 14–16: south on Strohgasse → cross Rennweg → continue south on Reisnerstraße → right on Prinz-Eugen-Straße → main entrance at <strong>Prinz-Eugen-Straße 27</strong>. About 10–12 min slowly. Mostly flat, paved.</p>
+        <div class="callout"><strong>Important:</strong> enter via the <strong>Upper Belvedere south entrance</strong> (Prinz-Eugen-Straße). Do NOT enter via Lower Belvedere on Rennweg and try to walk up through the gardens — that slope is the mobility issue the research flagged.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">09:15 – 11:15</div>
+    <div class="activity">Upper Belvedere — Klimt rooms, Marble Hall, Schiele</div>
+    <details>
+      <summary>What to see, in what order</summary>
+      <div class="body">
+        <p>Three levels with elevator: ground, <em>Beletage</em> (1st floor), 2nd floor. <strong>Start with the Beletage while energy is fresh</strong> — the headline rooms are there.</p>
+        <p><strong>Must-see sequence on the Beletage:</strong></p>
+        <ul>
+          <li><strong>Marble Hall</strong> — grand central reception room, frescoed ceiling, postcard view down the gardens to St. Stephen's spire. Also where the <strong>Austrian State Treaty was signed in 1955</strong>.</li>
+          <li><strong>The Klimt rooms:</strong>
+            <ul>
+              <li><em>The Kiss</em> (1907–1908) — gold-leaf icon. Smaller than expected; tends to draw a crowd. Just stand and look.</li>
+              <li><em>Judith I</em> (1901) — Klimt's other gold masterpiece. More intense than <em>The Kiss</em>. Worth a long pause.</li>
+            </ul>
+          </li>
+          <li><strong>Schiele rooms</strong> — Klimt's protégé. Look for <em>Death and the Maiden</em> and <em>The Family</em>.</li>
+          <li><strong>Vienna 1900 / Secession material</strong> — Kokoschka, Moser, the Klimt circle.</li>
+        </ul>
+        <p>Then ground floor for medieval and baroque Austrian art, second floor for 19th-century Austrian art (Biedermeier, Hans Makart) — <strong>skip these freely</strong> if mom is flagging. Klimt and the Marble Hall are the trip-justifying pieces.</p>
+        <p><em class="note">Cloakroom near the entrance · benches in galleries · small café inside Upper Belvedere for a sit-down break · audio guides available (no Bulgarian — Ivan provides context as you go).</em></p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">11:15 – 11:30</div>
+    <div class="activity">Walk through formal Belvedere gardens, exit east via Alpengarten gate</div>
+    <details>
+      <summary>Garden walkthrough → Botanical Garden</summary>
+      <div class="body">
+        <p>After Upper Belvedere, exit out the back onto the upper terrace. Pause for the postcard view down the gardens. Walk down the formal terraces — fountains, sphinxes, statuary. Stairs at points but ramped paths alongside.</p>
+        <p>About halfway down (or near the Lower Belvedere level), head <strong>east</strong> toward the <strong>Alpengarten</strong>. From the Alpengarten there's a connecting gate into the <strong>Botanical Garden</strong> of the University of Vienna.</p>
+        <div class="callout"><strong>Confirm the gate is open</strong> at the Upper Belvedere ticket desk when you arrive (it usually is during open hours). <strong>If the gate is closed:</strong> exit on Rennweg, walk ~3 min east to the Botanical Garden's main entrance at <strong>Mechelgasse 2</strong> · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Botanischer+Garten+Mechelgasse+2+1030+Wien" target="_blank" rel="noopener">map</a></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">11:30 – 12:15</div>
+    <div class="activity">Botanical Garden of the University of Vienna</div>
+    <details>
+      <summary>What's blooming, how to wander</summary>
+      <div class="body">
+        <p>Free entry, no ticket. Open from 10:00 to dusk. Flat, paved paths, plenty of benches.</p>
+        <p>In early May, look for: late tulips, magnolias (possibly past peak), peonies starting, alpine wildflowers, mature trees in fresh leaf, Japanese cherry varieties if any are still blooming.</p>
+        <p>Don't try to "do it all" — pick a slow loop, sit a few times, leave when satisfied. Exit on <strong>Rennweg</strong> for tram 71 to lunch.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">12:15 – 12:30</div>
+    <div class="activity">Tram 71 from Rennweg → lunch</div>
+    <details>
+      <summary>Which stop for which restaurant</summary>
+      <div class="body">
+        <p>Walking is out — use tram 71 (low-floor, elderly-friendly):</p>
+        <ul>
+          <li><strong>For Meissl &amp; Schadn</strong> — tram 71 northbound, <strong>3 stops to Schwarzenbergplatz</strong>, then 2–3 min walk. Total ~12–15 min.</li>
+          <li><strong>For Plachuttas</strong> — tram 71 northbound, <strong>4 stops to Karlsplatz, Oper</strong>, then 3 min walk. Total ~15–18 min.</li>
+        </ul>
+        <p>The 24-hour Vienna transit ticket from Thursday should still cover this if validated within the 24-h window; otherwise buy a fresh one (€8).</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">12:45 / 13:00</div>
+    <div class="activity">Lunch — Wiener Schnitzel</div>
+    <details>
+      <summary>Primary &amp; backup · what to order</summary>
+      <div class="body">
+        <p><strong>Primary: Meissl &amp; Schadn</strong> — Schubertring 10–12, 1010 Wien (in the Grand Ferdinand Hotel) · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Meissl+Schadn+Schubertring+10+1010+Wien" target="_blank" rel="noopener">map</a></p>
+        <p>Open daily 11:30–22:00. Book via <strong>Quandoo</strong> (app or quandoo.at) — real-time availability, can book same-day. Their own site (meisslundschadn.at) also has online booking. Ideal: book Thursday evening. Acceptable: book Friday morning from the Botanical Garden.</p>
+        <p><strong>Why:</strong> destination Wiener Schnitzel restaurant. Veal (real Wiener Schnitzel is only veal). Open salon kitchen — watch the Schnitzel pounded and fried tableside. Refined but not stuffy. Michelin Bib Gourmand. Calm enough for an elderly diner.</p>
+        <p><strong>Order:</strong> <em>Frittatensuppe</em> to start (clear beef broth with sliced pancake-strips), <em>Wiener Schnitzel</em> with <em>Erdäpfel-Vogerlsalat</em> (potato-and-lamb's-lettuce salad), <em>Kaiserschmarrn</em> with stewed plums to finish, glass of Grüner Veltliner.</p>
+        <p><strong>Backup: Plachuttas Gasthaus zur Oper</strong> — Walfischgasse 5/7, 1010 Wien (right by Vienna State Opera) · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Plachuttas+Gasthaus+zur+Oper+Walfischgasse+5+1010+Wien" target="_blank" rel="noopener">map</a> · plachutta-oper.at</p>
+        <p>Vienna's most popular Wiener Schnitzel three years running. Veal, classical preparation. Traditional Gasthaus atmosphere. Equivalent quality tier. <strong>Use this if</strong> Meissl &amp; Schadn is full on May 1, or if mom prefers a more traditional inn atmosphere.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">~14:30</div>
+    <div class="activity">Afternoon — pick A or B on the day</div>
+    <details>
+      <summary>Option A: Karlskirche · Option B: Stadtpark + Kursalon</summary>
+      <div class="body">
+        <div class="decision">
+          <h4>Option A — Karlskirche + Resselpark · ~45 min · lighter</h4>
+          <p>Karlskirche is a 5-min walk south of Meissl &amp; Schadn (or 8 min from Plachuttas). Vienna's other postcard baroque dome — giant green copper dome, two enormous Roman-style spiral columns flanking the entrance.</p>
+          <p>Step inside. Just pay basic entry (skip the panoramic lift inside the dome — too much for tired legs), sit on a pew, look up at the dome from below. Then sit at the <strong>Resselpark</strong> reflecting pool in front for fifteen minutes. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Karlskirche+Karlsplatz+1040+Wien" target="_blank" rel="noopener">map</a></p>
+          <p><em class="note">Adds Vienna's other major baroque sight at almost zero mobility cost.</em></p>
+        </div>
+        <div class="decision">
+          <h4>Option B — Stadtpark + Kursalon · ~75 min · slightly more</h4>
+          <p>Tram from Karlsplatz/Oper to Stadtpark, walk slowly through the park, find the <strong>gold Johann Strauss statue</strong> in the gilded archway — Vienna's most photographed statue. Sit at the <strong>Kursalon café terrace</strong> for a Melange and a slice of Sachertorte. The Kursalon is where Strauss conducted <em>On the Beautiful Blue Danube</em> premieres in the 1860s — a poetic close to the trip's musical arc with Thursday's symphony concert. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kursalon+Wien+Johannesgasse+33+1010+Wien" target="_blank" rel="noopener">map</a></p>
+          <p>Then ~5 min walk home through the park.</p>
+        </div>
+        <p><strong>How to choose:</strong> A if mom is tired or weather is poor (Karlskirche is indoors). B if she's energised and wants the concert-connection moment in fresh air.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">~16:00</div>
+    <div class="activity">Slow walk back to apartment, rest</div>
+  </div>
+
+  <div class="block">
+    <div class="time">Evening</div>
+    <div class="activity">Light dinner at apartment · optional Café Schwarzenberg coffeehouse stop</div>
+    <details>
+      <summary>By now Schwarzenberg is the trip's familiar coffeehouse</summary>
+      <div class="body">
+        <p>Slow walk to <strong>Café Schwarzenberg</strong> (you'll know the way) for an evening Melange and a slice of cake. A nice place to sit and reflect on the day.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SATURDAY ============================================================= -->
+<section class="day" id="saturday">
+  <div class="day-header">
+    <h2>Saturday · 2 May</h2>
+    <p class="day-subtitle">Naschmarkt + Flohmarkt morning · Hofburg short-form / Imperial Treasury afternoon (decide on energy).</p>
+  </div>
+
+  <div class="block">
+    <div class="time">09:00</div>
+    <div class="activity">U4 from Wien Mitte (or Stadtpark) → Kettenbrückengasse</div>
+    <details>
+      <summary>Why the south end first</summary>
+      <div class="body">
+        <p>3 stops, ~6 min. Starting at the south end means the Flohmarkt while energy is fresh and selection is best, then walking north into the food market.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">09:30 – 11:00</div>
+    <div class="activity">Flohmarkt (Saturday-only flea market, ~400 vendors)</div>
+    <details>
+      <summary>What's worth looking for · cash &amp; pickpocket note</summary>
+      <div class="body">
+        <p>~400 vendors at the southern end of Naschmarkt: antiques, vintage clothing, vinyl, Habsburg-era postcards, Turkish/Persian textiles, junk piles to sift through.</p>
+        <p><strong>Worth taking home:</strong> small Augarten porcelain piece (real ones marked "AW") from a flea market dealer, Styrian pumpkin seed oil from a cheese stall, Manner wafers, an old Vienna print or postcard.</p>
+        <p><strong>Bring cash</strong> (~€100–200). <strong>Wallet in front pocket.</strong></p>
+        <div class="callout"><strong>If it rains:</strong> flea market mostly packs up; food market is partially covered, restaurants are indoor. Switch to a long Naschmarkt food-market brunch only.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">11:00 – 11:30</div>
+    <div class="activity">Slow walk north into the food market</div>
+    <details>
+      <summary>Tasting notes</summary>
+      <div class="body">
+        <p>Taste cheese, olives, smell the spice stalls, watch fishmongers. ~120 permanent food stalls.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">11:30 – 12:30</div>
+    <div class="activity">Sit-down brunch at a Naschmarkt restaurant</div>
+    <details>
+      <summary>Restaurant options</summary>
+      <div class="body">
+        <ul>
+          <li><strong>Naschmarkt Deli</strong> — popular sit-down spot, large breakfast plates, Viennese-meets-Levantine</li>
+          <li><strong>Neni am Naschmarkt</strong> — Israeli/Levantine fusion (the Sabich is famous)</li>
+          <li><strong>Café Restaurant Drechsler</strong> (south end) — calm classic Vienna café with Naschmarkt twist</li>
+          <li><strong>Umar Fisch</strong> — fish/oysters lunch</li>
+        </ul>
+        <p><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Naschmarkt+1060+Wien" target="_blank" rel="noopener">Naschmarkt on map</a></p>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">~12:30 – 13:00</div>
+    <div class="activity">U4 back to apartment area for a brief reset</div>
+  </div>
+
+  <div class="block">
+    <div class="time">Afternoon</div>
+    <div class="activity">Hofburg "imperial double" — pick by energy</div>
+    <details>
+      <summary>Sisi + Apartments · Schatzkammer · or both</summary>
+      <div class="body">
+        <p>The Hofburg complex is the Habsburgs' city palace and the seat of imperial power for over 600 years. Two ticketed pieces; <strong>separate tickets</strong>. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Hofburg+Vienna+Heldenplatz+1010+Wien" target="_blank" rel="noopener">map</a></p>
+        <div class="decision">
+          <h4>Sisi Museum + Imperial Apartments + Silver Collection · ~90 min</h4>
+          <p>The "Habsburgs at home" experience that Belvedere doesn't give you.</p>
+          <ul>
+            <li><strong>Sisi Museum</strong> — Empress Elisabeth's life: unhappy royal marriage, beauty rituals, exercise obsession, wandering, assassination by an anarchist in Geneva 1898.</li>
+            <li><strong>Imperial Apartments</strong> — 19 rooms where Franz Joseph and Sisi actually lived: bedrooms, audience chamber, his austere iron camp-bed (he slept on it for 50 years), her exercise room, dining table set for state guests.</li>
+            <li><strong>Silver Collection</strong> — imperial tableware, including a 30-meter-long baroque silver centerpiece for state banquets, gold-plated services for 140 guests.</li>
+          </ul>
+          <p><strong>Pre-book</strong> timed entry on sisimuseum-hofburg.at. Saturday is a normal opening day (not the May 1 issue).</p>
+        </div>
+        <div class="decision">
+          <h4>Imperial Treasury (Schatzkammer) · ~45 min</h4>
+          <p>One of the great treasure rooms of Europe. Separate ticket from Sisi/Apartments, different wing of the Hofburg.</p>
+          <ul>
+            <li><strong>Crown of the Holy Roman Empire</strong> (10th century, oldest crown in Europe)</li>
+            <li>Imperial regalia — orb, sceptre, ceremonial sword</li>
+            <li>Crown of the Austrian Empire</li>
+            <li>The Burgundian inheritance — treasures from the 1477 marriage of Maximilian I to Mary of Burgundy</li>
+            <li>One of the world's largest emeralds — a baroque perfume jar, 2,860 carats, carved from a single emerald</li>
+            <li>Habsburg jewels and personal collection</li>
+            <li>Religious relics and the "narwhal horn" kept as a unicorn-horn relic — one of the strangest items in any treasury</li>
+          </ul>
+          <p>If mom is a "this craftsmanship is unbelievable" person, this is unmissable. If she's more focused on the human/imperial-life side, the Sisi/Apartments piece is the priority.</p>
+        </div>
+        <div class="decision">
+          <h4>How to combine</h4>
+          <p><strong>Both</strong> (the "imperial double", ~3 hours) — Sisi + Apartments first while energy is fresh, brief sit-down break, then walk across the Hofburg complex to the Schatzkammer.<br>
+          <strong>Just Sisi + Apartments</strong> (~90 min + coffeehouse) — the lower-effort version.<br>
+          <strong>Just Schatzkammer</strong> (~45 min + coffeehouse) — the lightest version.</p>
+          <p><strong>Decide based on energy after the Naschmarkt morning.</strong></p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">Late afternoon</div>
+    <div class="activity">Coffeehouse near Hofburg</div>
+    <details>
+      <summary>Hawelka or Landtmann</summary>
+      <div class="body">
+        <ul>
+          <li><strong>Café Hawelka</strong> (Dorotheergasse 6, ~5 min walk) — small, dim, bohemian, the post-WWII artists' café. Famous Buchteln (jam-filled yeast pastries) baked in the late afternoon. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Hawelka+Dorotheergasse+6+1010+Wien" target="_blank" rel="noopener">map</a></li>
+          <li><strong>Café Landtmann</strong> (on the Ring opposite the Burgtheater, ~10 min walk) — grand, formal, Sigmund Freud's regular café. Easier with elderly mobility. <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Landtmann+Universitätsring+4+1010+Wien" target="_blank" rel="noopener">map</a></li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="block">
+    <div class="time">Evening</div>
+    <div class="activity">Home before dark · light early dinner · rest for Sunday departure</div>
+    <details>
+      <summary>Backup options if Hofburg/Treasury falls through</summary>
+      <div class="body">
+        <p>In rough order of strength for this trip:</p>
+        <ul>
+          <li><strong>Secession Building + Klimt's Beethoven Frieze</strong> — 2 min walk from Naschmarkt's north end. The 1898 art-nouveau exhibition hall with the golden "cabbage" dome. In the basement: Klimt's permanently installed 34-meter Beethoven Frieze (1902). ~30 min focused. Pairs with Friday's Belvedere Klimt.</li>
+          <li><strong>Mozarthaus + Imperial Crypt</strong> — 60 min Mozarthaus (his only surviving Vienna apartment, behind Stephansdom) + 45 min Imperial Crypt (Habsburg burial vault on Neuer Markt, 145 imperial bodies including Sisi). Same neighbourhood, both small.</li>
+          <li><strong>Hundertwasserhaus + Kunst Haus Wien</strong> — walking distance from the apartment. Colourful expressionist Hundertwasser's residential building plus a museum of his work three blocks away. ~90 min combined.</li>
+          <li><strong>Fiaker carriage ride</strong> — 40-min horse-drawn carriage loop through the Innere Stadt. €80 per carriage. Mobility-perfect.</li>
+          <li><strong>Vienna State Opera tour + Haus der Musik</strong> — 40-min Opera tour + 90-min interactive music museum.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SUNDAY =============================================================== -->
+<section class="day" id="sunday">
+  <div class="day-header">
+    <h2>Sunday · 3 May</h2>
+    <p class="day-subtitle">Departure day.</p>
+  </div>
+
+  <div class="tbd">
+    Light morning before departure — TBD
+  </div>
+</section>
+
+<!-- RESTAURANTS &amp; CAFÉS ================================================ -->
+<section class="restaurants">
+  <h2>Restaurants &amp; cafés</h2>
+  <p class="sub">Quick reference card. All addresses tap to map.</p>
+
+  <div class="restaurant">
+    <div class="name">Meissl &amp; Schadn <span class="role">Lunch · primary</span></div>
+    <div class="desc">Destination Wiener Schnitzel restaurant. Veal only. Open salon kitchen — watch it pounded and fried tableside. Michelin Bib Gourmand.</div>
+    <div class="meta">Schubertring 10–12, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Meissl+Schadn+Schubertring+10+1010+Wien" target="_blank" rel="noopener">map</a> · book via Quandoo or meisslundschadn.at</div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Plachuttas Gasthaus zur Oper <span class="role">Lunch · backup</span></div>
+    <div class="desc">Vienna's most popular Wiener Schnitzel three years running. Traditional Gasthaus atmosphere — old-Vienna inn rather than hotel-restaurant. Equivalent quality tier.</div>
+    <div class="meta">Walfischgasse 5/7, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Plachuttas+Gasthaus+zur+Oper+Walfischgasse+5+1010+Wien" target="_blank" rel="noopener">map</a> · plachutta-oper.at</div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Schwarzenberg <span class="role">Coffeehouse · home base</span></div>
+    <div class="desc">Founded 1861. Marble tables, Thonet chairs, wood newspaper rack. Order: Wiener Frühstück + Melange. Spacious enough that two suitcases tuck under the table without drama.</div>
+    <div class="meta">Kärntner Ring 17, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Schwarzenberg+Kärntner+Ring+17+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Diglas <span class="role">Coffeehouse · cathedral</span></div>
+    <div class="desc">Classic, large, marble tables, excellent Apfelstrudel. 3 min from Stephansdom.</div>
+    <div class="meta">Wollzeile 10, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Diglas+Wollzeile+10+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Frauenhuber <span class="role">Coffeehouse · oldest</span></div>
+    <div class="desc">Vienna's oldest café (1824); Mozart and Beethoven both performed in this building. Small, atmospheric.</div>
+    <div class="meta">Himmelpfortgasse 6, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Frauenhuber+Himmelpfortgasse+6+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Hawelka <span class="role">Coffeehouse · Hofburg</span></div>
+    <div class="desc">Small, dim, bohemian. Post-WWII artists' café. Famous Buchteln (jam-filled yeast pastries) baked in the late afternoon.</div>
+    <div class="meta">Dorotheergasse 6, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Hawelka+Dorotheergasse+6+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Landtmann <span class="role">Coffeehouse · Ring</span></div>
+    <div class="desc">Grand, formal. Sigmund Freud's regular café. Easier with elderly mobility — opposite the Burgtheater.</div>
+    <div class="meta">Universitätsring 4, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Landtmann+Universitätsring+4+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Café Prückel <span class="role">Bad-weather backup</span></div>
+    <div class="desc">Opposite Stadtpark, 5 min from the apartment. Calm, fully indoors. Use as the bad-weather Innere Stadt substitute.</div>
+    <div class="meta">Stubenring 24, 1010 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Café+Prückel+Stubenring+24+1010+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+
+  <div class="restaurant">
+    <div class="name">Naschmarkt — sit-down brunch options <span class="role">Saturday late morning</span></div>
+    <div class="desc">Naschmarkt Deli (Viennese-Levantine) · Neni am Naschmarkt (Israeli fusion, Sabich) · Café Restaurant Drechsler (classic Vienna at the south end) · Umar Fisch (fish and oysters).</div>
+    <div class="meta">Naschmarkt, between Karlsplatz and Kettenbrückengasse, 1060 Wien · <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Naschmarkt+1060+Wien" target="_blank" rel="noopener">map</a></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="updated">Last updated <time datetime="2026-04-29">29 April 2026</time></div>
+  <div>Source: thursday-plan.md · friday-plan.md · saturday-candidates.md</div>
+</footer>
+
+<script>
+// Auto-open all <details> for printing, restore on cancel.
+(function() {
+  var memo = [];
+  window.addEventListener('beforeprint', function() {
+    memo = [];
+    document.querySelectorAll('details').forEach(function(d) {
+      memo.push([d, d.open]);
+      d.open = true;
+    });
+  });
+  window.addEventListener('afterprint', function() {
+    memo.forEach(function(pair) { pair[0].open = pair[1]; });
+    memo = [];
+  });
+})();
+</script>
+</body>
+</html>
